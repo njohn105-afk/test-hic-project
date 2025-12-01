@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Profile</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+
+<body>
+
+  <!-- =====NAVBAR (Friend Style)==== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+
+      <div class="navbar-left">
+        <a href="/" class="nav-link">
+          <img src="{% static 'img/logo.png' %}" class="navbar-logo">
+        </a>
+      </div>
+
+      <div class="navbar-right">
+        <a href="/game1/" class="nav-link">Blackjack</a>
+        <a href="/game2/" class="nav-link">Roulette</a>
+        <a href="/game3/" class="nav-link">Mines</a>
+        <a href="/game4/" class="nav-link">Coinflip</a>
+      </div>
+
+      <a href="{% url 'profile' %}" class="nav-link">
+        <img src="{% static 'img/profile-circle-svgrepo-com.svg' %}" class="nav-profile-btn">
+      </a>
+
+      <div class="balance-box">
+        Balance: <span id="balance-amount"></span>
+        <button class="balance-add-btn">+</button>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- ===== PAGE LAYOUT ===== -->
+  <div class="profile-layout">
+
+    <!-- Sidebar -->
+    <div class="profile-sidebar">
+        <button class="profile-tab active">Profile</button>
+        <button class="profile-tab">Rewards</button>
+        <button class="profile-tab">History</button>
+
+        <a href="{% url 'logout' %}">
+            <button class="profile-tab logout">Log Out</button>
+        </a>
+    </div>
+
+    <!-- Main Content (Single container like friend’s) -->
+    <div class="profile-container">
+
+        <div class="profile-content" id="history-content">
+
+          <!-- Default content (Profile page content goes here) -->
+          <h2 class="profile-title">Welcome, {{ user.username }}!</h2>
+
+          <div class="profile-main-box">
+
+            <div class="profile-photo-box">
+              {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" class="profile-img-large">
+              {% else %}
+                <img src="{% static 'img/profile-circle-svgrepo-com.svg' %}" class="profile-img-large default-img">
+              {% endif %}
+
+              <form method="POST" enctype="multipart/form-data" class="upload-form">
+                {% csrf_token %}
+                <input type="file" name="profile_image" class="upload-input">
+                <button type="submit" class="upload-btn">Update Photo</button>
+              </form>
+            </div>
+
+            <div class="profile-info-box">
+              <h3 class="profile-section-title">Account Details</h3>
+              <p><strong>Username:</strong> {{ user.username }}</p>
+              <p><strong>Email:</strong> {{ user.email }}</p>
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+  <script src="{% static 'js/currencyManager.js' %}"></script>
+  <script src="{% static 'js/profile.js' %}"></script>
+
+  <footer>
+    Fake currency only · No real-money gambling · For demonstration & fun play.
+  </footer>
+
+</body>
+</html>

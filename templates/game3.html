@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIC Group 10</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+  <!-- =====NAVBAR==== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/" class="nav-link"><img src="{% static 'img/logo.png' %}" alt="Logo" class="navbar-logo"></a>
+      </div>
+      <div class="navbar-right">
+        <a href="/game1/" class="nav-link">Blackjack</a>
+        <a href="/game2/" class="nav-link">Roulette</a>
+        <a href="/game3/" class="nav-link active">Mines</a>
+        <a href="/game4/" class="nav-link">Coinflip</a>
+      </div>
+
+      <a href="{% url 'profile' %}" class="nav-link">
+  <img src="{% static 'img/profile-circle-svgrepo-com.svg' %}" alt="Profile" class="nav-profile-btn">
+</a>
+
+      <div class="balance-box">
+        
+        Balance: <span id="balance-amount"></span>
+        <button class="balance-add-btn">+</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====GAME==== -->
+  <div class="bet-container">
+        <h2>Bet Amount:</h2>
+        <input type="number" id="chip_cost" name="chip_cost" class="chip_cost" placeholder="Enter chip value" value="100">
+
+        <h2>Mines:</h2>
+        <input type="number" id="mine_count" name="mine_count" class="chip_cost" placeholder="Enter mines amount" value="6">
+
+        <br>
+
+        <button class="game-button" id="place-bet">Lock-in Bet</button>
+  </div>
+  <div class="mines-game-container">
+    <div id="mines-board" class="mines-grid"></div>
+    <div class="bottom-bar">
+      <span class="current-winnings">Current Winnings: <span id="current-winnings-amount">$0</span></span>
+      <button class="claim-winnings-btn" id="claim-winnings">Claim Winnings</button>
+    </div>
+    <script src="{% static 'js/currencyManager.js' %}"></script>
+    <script src="{% static 'js/mines.js' %}"></script>
+  </div>
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modal-title" class="modal-title"></h2>
+      <p id="modal-message" class="modal-message"></p>
+      <button id="close-modal" class="modal-close-btn">Dismiss</button>
+    </div>
+  </div>
+</body>
+</html>

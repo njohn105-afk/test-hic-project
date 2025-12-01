@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIC Group 10</title>
+
+  <!-- Django static CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+  <!-- =====NAVBAR==== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <!-- Home link -->
+        <a href="/" class="nav-link">
+          <img src="{% static 'img/logo.png' %}" alt="Logo" class="navbar-logo">
+        </a>
+      </div>
+
+      <div class="navbar-right">
+        <!-- Game routes -->
+        <a href="/game1/" class="nav-link">Blackjack</a>
+        <a href="/game2/" class="nav-link">Roulette</a>
+        <a href="/game3/" class="nav-link">Mines</a>
+        <a href="/game4/" class="nav-link">Coinflip</a>
+      </div>
+
+      <!-- Profile page -->
+      <!-- Profile page -->
+<a href="{% url 'profile' %}" class="nav-link">
+  <img src="{% static 'img/profile-circle-svgrepo-com.svg' %}" alt="Profile" class="nav-profile-btn">
+</a>
+
+
+      <div class="balance-box">
+        Balance: <span id="balance-amount"></span>
+        <button class="balance-add-btn">+</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <div class="page-inner">
+      <!-- Left: hero + login notice -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-kicker">Welcome to Site Name</div>
+          <h1 id="hero-title" class="hero-title">
+            A <span class="hero-highlight">for-fun casino</span> with
+            zero real-money risk.
+          </h1>
+
+          <p class="hero-subtitle">
+            Spin, flip and draw with a shared fake currency. Explore every game
+            in guest mode, or create a free account to track your balance,
+            history and achievements.
+          </p>
+
+          <div class="hero-alert" role="status">
+            <div class="hero-alert-icon">!</div>
+            <div>
+              You’re not logged in. <strong>Login</strong> to save your progress,
+              currency and badges — or continue playing as a guest.
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
+            <a class="btn btn-outline" href="{% url 'login' %}">Login</a>
+          </div>
+
+          <p class="hero-footnote">
+            Guest access is <strong>fully playable</strong> — only your data
+            won’t be saved between visits.
+          </p>
+        </div>
+      </section>
+
+      <!-- Right: games grid -->
+      <section id="games" class="games-section" aria-label="Available games">
+        <div class="games-header">
+          <div>
+            <div class="games-title">Featured games</div>
+            <div class="games-caption">
+              Click a game card to jump right in.
+            </div>
+          </div>
+        </div>
+
+        <div class="games-grid">
+          <!-- Coinflip -->
+          <a href="/game4/" class="game-card">
+            <div class="game-thumb">
+              <div class="game-icon">🪙</div>
+            </div>
+            <div class="game-meta">
+              <div>
+                <div class="game-name">Coinflip</div>
+                <div class="game-tagline">Heads, tails & streaks.</div>
+              </div>
+              <span class="badge-pill">Fast play</span>
+            </div>
+          </a>
+
+          <!-- Roulette -->
+          <a href="/game2/" class="game-card">
+            <div class="game-thumb">
+              <div class="game-icon">🎡</div>
+            </div>
+            <div class="game-meta">
+              <div>
+                <div class="game-name">Roulette</div>
+                <div class="game-tagline">Red or black – you pick.</div>
+              </div>
+              <span class="badge-pill">Classic</span>
+            </div>
+          </a>
+
+          <!-- Blackjack -->
+          <a href="/game1/" class="game-card">
+            <div class="game-thumb">
+              <div class="game-icon">🂡</div>
+            </div>
+            <div class="game-meta">
+              <div>
+                <div class="game-name">Blackjack</div>
+                <div class="game-tagline">Hit, stand, or bust.</div>
+              </div>
+              <span class="badge-pill">Strategy</span>
+            </div>
+          </a>
+
+          <!-- Mines -->
+          <a href="/game3/" class="game-card">
+            <div class="game-thumb">
+              <div class="game-icon">💣</div>
+            </div>
+            <div class="game-meta">
+              <div>
+                <div class="game-name">Mines</div>
+                <div class="game-tagline">Press your luck carefully.</div>
+              </div>
+              <span class="badge-pill">High risk</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Fake currency only · No real-money gambling · For demonstration & fun play.
+  </footer>
+
+  <!-- Django static JS -->
+  <script src="{% static 'js/currencyManager.js' %}"></script>
+</body>
+</html>

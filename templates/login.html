@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login • HIC Group 10</title>
+
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-card">
+        <h2 class="auth-title">Welcome Back</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" class="auth-input" placeholder="Username" required>
+            <input type="password" name="password" class="auth-input" placeholder="Password" required>
+            <button type="submit" class="auth-button">Login</button>
+        </form>
+
+        <p class="auth-footer">
+            Don't have an account?
+            <a href="{% url 'register' %}" class="auth-link">Register</a>
+        </p>
+    </div>
+
+</body>
+</html>

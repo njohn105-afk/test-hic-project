@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIC Group 10</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+  <!-- =====NAVBAR==== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/" class="nav-link"><img src="{% static 'img/logo.png' %}" alt="Logo" class="navbar-logo"></a>
+      </div>
+      <div class="navbar-right">
+        <a href="/game1/" class="nav-link">Blackjack</a>
+        <a href="/game2/" class="nav-link">Roulette</a>
+        <a href="/game3/" class="nav-link">Mines</a>
+        <a href="/game4/" class="nav-link active">Coinflip</a>
+      </div>
+
+      <a href="{% url 'profile' %}" class="nav-link">
+  <img src="{% static 'img/profile-circle-svgrepo-com.svg' %}" alt="Profile" class="nav-profile-btn">
+</a>
+      <div class="balance-box">
+        Balance: <span id="balance-amount"></span>
+        <button class="balance-add-btn">+</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====GAME==== -->
+  <div class="bet-container">
+        <h2>Bet Amount:</h2>
+        <input type="number" id="chip_cost" class="chip_cost" placeholder="Enter chip value" value="100">
+
+        <h2>Heads or Tails:</h2>
+        <br>
+
+        <select id="coinflip-choice" class="chip_cost">
+          <option value="heads">Heads</option>
+          <option value="tails">Tails</option>
+        </select>
+
+        <br><br><br>
+
+        <button class="game-button-new" id="place-bet">Lock-in Bet</button>
+  </div>
+
+  <div class="game-container">
+    <h2 id="winning-text"></h2>
+
+    <div class="wheel-wrapper">
+        <img id="coin" src="{% static 'coins/coin_front.png' %}">
+    </div>
+
+    <h2 id="profit-text"></h2>
+  </div>
+
+  <!-- Include JS only ONCE -->
+  <script src="{% static 'js/currencyManager.js' %}"></script>
+  <script src="{% static 'js/coinflip.js' %}"></script>
+
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modal-title" class="modal-title"></h2>
+      <p id="modal-message" class="modal-message"></p>
+      <button id="close-modal" class="modal-close-btn">Dismiss</button>
+    </div>
+  </div>
+
+</body>
+</html>

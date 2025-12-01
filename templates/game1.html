@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIC Group 10</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+
+  <!-- =====NAVBAR==== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <a href="/" class="nav-link"><img src="{% static 'img/logo.png' %}" alt="Logo" class="navbar-logo"></a>
+      </div>
+      <div class="navbar-right">
+        <a href="/game1/" class="nav-link active">Blackjack</a>
+        <a href="/game2/" class="nav-link">Roulette</a>
+        <a href="/game3/" class="nav-link">Mines</a>
+        <a href="/game4/" class="nav-link">Coinflip</a>
+      </div>
+
+      <a href="{% url 'profile' %}" class="nav-link">
+  <img src="{% static 'img/profile-circle-svgrepo-com.svg' %}" alt="Profile" class="nav-profile-btn">
+</a>
+      <div class="balance-box">
+        Balance: <span id="balance-amount"></span>
+        <button class="balance-add-btn">+</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====GAME==== -->
+  <div class="bet-container">
+        <h2>Your Bet:</h2>
+        <h2 id="bet-amnt">100</h2>
+
+        <button class="game-button-new" id="raise">+</button>
+        <button class="game-button-new" id="lower">-</button>
+        <br>
+        <br>
+        <button class="game-button-new" id="place-bet">Lock-in Bet</button>
+  </div>
+  <div class="game-container">
+
+    <script src="{% static 'js/currencyManager.js' %}"></script>
+    <script src="{% static 'js/blackjack.js' %}"></script>
+
+    <h2>Dealer: <span id="dealer-sum"></span></h2>
+        <div id="dealer-cards">
+            <img id="hidden" src="{% static 'cards/BACK.png' %}">
+        </div>
+
+        <h2>You: <span id="your-sum"></span></h2>
+        <div id="your-cards"></div>
+
+        <br>
+        <button class="game-button-new" id="hit">Hit</button>
+        <button class="game-button-new" id="stay">Stay</button>
+        <p id="results"></p>
+
+  </div>
+  
+</body>
+</html>
