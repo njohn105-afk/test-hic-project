@@ -1,13 +1,19 @@
 from pathlib import Path
 import os
 
+
+
+
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-zvo0zo95cksy16r9qlqsmdnj=2r$m^!&(y+29eqpq@*%%p62xv'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
 # For deployment later: ALLOWED_HOSTS = ["*"]
 
 
@@ -101,12 +107,12 @@ USE_TZ = True
 # STATIC FILES
 # ======================
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = []
    # for collectstatic (deployment)
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 # ======================
 # MEDIA FILES (profile pictures)
