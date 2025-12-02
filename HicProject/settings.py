@@ -108,8 +108,10 @@ USE_TZ = True
 # ======================
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = []
-   # for collectstatic (deployment)
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
